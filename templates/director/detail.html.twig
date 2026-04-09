@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{director.lastName}}
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center mt-5">{{director.lastName}}</h1>
+	<div class="container bg-dark rounded-4 p-5 my-5">
+		<div class="row">
+			<div class="card p-3">
+				<h1 class="text-center mb-3">
+					<strong>
+						{{ director.lastName }}
+						{{ director.firstName }}
+					</strong>
+				</h1>
+				<span>
+					{{ director.nationality }}</span>
+
+				<p class="mt-3">Liste de ses films :
+				</p>
+				<ul>
+					{% for movie in director.movies %}
+						<li>
+							{{ movie.title }}
+						</li>
+					{% endfor %}
+				</ul>
+				<a href="{{ path('app_directors') }}" class="btn btn-primary mt-5 w-25 mx-auto">Tous les réalisateurs</a>
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

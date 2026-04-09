@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les Films
+{% endblock %}
+
+{% block body %}
+	<h1 class="text-center mt-5">Films</h1>
+	<div class="container bg-dark rounded-4 p-5 my-5">
+		<div class="row">
+			{% for movie in movies %}
+				<div class="col-12 col-md-4 my-3">
+					<div class="card p-3">
+						<a href="{{path('app_movie_detail', {id: movie.id})}}" class="text-center mb-3">
+							<strong>
+								{{ movie.title }}
+							</strong>
+						</a>
+						<div class="d-flex justify-content-between">
+							<p>{{ movie.releaseYear }}</p>
+							<p>{{ movie.genre }}</p>
+						</div>
+						<a href="{{path('app_director_detail', {id: movie.director.id})}}" class="text-center mb-3">
+							<strong>
+								{{ movie.director.lastName }}
+							</strong>
+						</a>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+
+	</div>
+{% endblock %}
